@@ -19,20 +19,62 @@ namespace JobApplicationTrackerAPI.DAL
                 .ToListAsync();
         }
 
-        // Create a skill
+        // Create a new skill
         public async Task AddSkillAsync(Skill skill)
         {
             await _context.Skills.AddAsync(skill);
         }
 
-        // Delete skill by id
-        public async Task DeleteSkillAsync(int id)
+        // Add a new skill to the application
+        public async Task<bool> AddSkillToApplicationAsync(int applicationId, int skillId)
         {
-            Skill? skill = await _context.Skills.FindAsync(id);
-            if (skill != null)
+            // Fetch the application with its current skills
+            Application? application = await _context.Applications
+                .Include(a => a.Skills)
+                .FirstOrDefaultAsync(a => a.ApplicationId == applicationId);
+            if (application == null)
             {
-                _context.Skills.Remove(skill);
+                return false;
             }
+
+            // Check skill exists in database
+            Skill? skill = await _context.Skills.FindAsync(skillId);
+            if (skill == null)
+            {
+                return false;
+            }
+
+            // Check if application has the skill already
+            if (application.Skills.Any(s => s.SkillId == skillId))
+            {
+                throw new InvalidOperationException("Skill is already attached to this application");
+            }
+
+            application.Skills.Add(skill);
+            return true;
+        }
+
+        // Remove a skill from an application
+        public async Task<bool> DeleteSkillFromApplicationAsync(int applicationId, int skillId)
+        {
+            Application? application = await _context.Applications
+                .Include(a => a.Skills)
+                .FirstOrDefaultAsync(a => a.ApplicationId == applicationId);
+
+            if (application == null)
+            {
+                return false;
+            }
+
+
+            Skill? skill = application.Skills.FirstOrDefault(s => s.SkillId == skillId);
+            if (skill == null)
+            {
+                return false;
+            }
+
+            application.Skills.Remove(skill);
+            return true;
         }
 
         public async Task SaveChangesAsync()
