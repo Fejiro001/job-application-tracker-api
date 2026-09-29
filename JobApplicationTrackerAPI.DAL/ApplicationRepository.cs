@@ -98,13 +98,15 @@ namespace JobApplicationTrackerAPI.DAL
         }
 
         // Delete application by id
-        public async Task DeleteApplicationAsync(int id)
+        public async Task<bool> DeleteApplicationAsync(int id)
         {
             Application? application = await _context.Applications.FindAsync(id);
-            if (application != null)
+            if (application == null)
             {
-                _context.Applications.Remove(application);
+                return false;
             }
+            _context.Applications.Remove(application);
+            return true;
         }
 
         public async Task SaveChangesAsync()
