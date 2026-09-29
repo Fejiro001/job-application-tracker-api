@@ -37,7 +37,7 @@ namespace JobApplicationTrackerAPI.DAL
                 entity.Property(u => u.LastName).IsRequired().HasMaxLength(100);
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(255);
                 entity.Property(u => u.PasswordHash).IsRequired().HasMaxLength(255);
-                entity.Property(u => u.CreatedAt).IsRequired();
+                entity.Property(u => u.CreatedAt).IsRequired().HasDefaultValueSql("GETUTCDATE()");
 
                 // Constraints
                 entity.HasIndex(u => u.Email).IsUnique();
@@ -114,6 +114,9 @@ namespace JobApplicationTrackerAPI.DAL
                     l => l.HasOne(typeof(Skill)).WithMany().HasForeignKey("SkillId"),
                     r => r.HasOne(typeof(Application)).WithMany().HasForeignKey("ApplicationId")
                 );
+
+            // Seed data
+            modelBuilder.Seed();
         }
     }
 }
