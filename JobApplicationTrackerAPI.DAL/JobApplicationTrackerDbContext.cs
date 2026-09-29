@@ -48,7 +48,7 @@ namespace JobApplicationTrackerAPI.DAL
                 entity.ToTable("Company");
 
                 entity.Property(c => c.Name).IsRequired().HasMaxLength(100);
-                entity.Property(c => c.WebsiteUrl).IsRequired().HasMaxLength(255);
+                entity.Property(c => c.WebsiteUrl).IsRequired().HasMaxLength(2048);
                 entity.Property(c => c.Industry).IsRequired().HasMaxLength(255);
                 entity.Property(c => c.Location).IsRequired().HasMaxLength(255);
             });

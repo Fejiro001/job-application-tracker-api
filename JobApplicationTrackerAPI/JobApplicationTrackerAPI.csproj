@@ -20,12 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Mappings\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\JobApplicationTrackerAPI.BLL\JobApplicationTrackerAPI.BLL.csproj" />
     <ProjectReference Include="..\JobApplicationTrackerAPI.Models\JobApplicationTrackerAPI.Models.csproj" />
   </ItemGroup>
