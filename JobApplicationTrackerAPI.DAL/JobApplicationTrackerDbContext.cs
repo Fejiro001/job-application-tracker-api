@@ -110,7 +110,10 @@ namespace JobApplicationTrackerAPI.DAL
             modelBuilder.Entity<Application>()
                 .HasMany(a => a.Skills)
                 .WithMany(s => s.Applications)
-                .UsingEntity("ApplicationSkill");
+                .UsingEntity("ApplicationSkill",
+                    l => l.HasOne(typeof(Skill)).WithMany().HasForeignKey("SkillId"),
+                    r => r.HasOne(typeof(Application)).WithMany().HasForeignKey("ApplicationId")
+                );
         }
     }
 }
