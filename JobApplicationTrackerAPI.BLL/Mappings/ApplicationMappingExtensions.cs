@@ -41,7 +41,7 @@ namespace JobApplicationTrackerAPI.BLL.Mappings
             };
         }
 
-        // List<Entity> -> List<DTOs>
+        // List<Entity> -> IEnumerable<DTOs>
         public static IEnumerable<ApplicationReadDto> ToDtoList(this IEnumerable<Application> applications)
         {
             return applications.Select(a => a.ToDto());
