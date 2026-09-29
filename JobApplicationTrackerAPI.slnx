@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="JobApplicationTrackerAPI.BLL/JobApplicationTrackerAPI.BLL.csproj" />
+  <Project Path="JobApplicationTrackerAPI.DAL/JobApplicationTrackerAPI.DAL.csproj" />
+  <Project Path="JobApplicationTrackerAPI.Models/JobApplicationTrackerAPI.Models.csproj" />
+  <Project Path="JobApplicationTrackerAPI/JobApplicationTrackerAPI.csproj" />
+</Solution>
