@@ -18,6 +18,8 @@
         public DateTime AppliedDate { get; set; }
         public decimal? SalaryMin { get; set; }
         public decimal? SalaryMax { get; set; }
+
+        // Navigation properties
         // 1:N User to Application
         public int UserId { get; set; }
         public User? User { get; set; }
@@ -26,5 +28,7 @@
         public Company? Company { get; set; }
         // 1:N Application to Interview
         public ICollection<Interview> Interviews { get; set; } = new List<Interview>();
+        // M:N Application to Skill
+        public ICollection<Skill> Skills { get; set; } = new List<Skill>();
     }
 }
