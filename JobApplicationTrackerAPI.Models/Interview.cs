@@ -8,5 +8,8 @@
         public string? InterviewerName { get; set; }
         public string? Notes { get; set; }
         public bool IsCompleted { get; set; }
+        // 1:N Application to Interview
+        public int ApplicationId { get; set; }
+        public Application? Application { get; set; }
     }
 }
