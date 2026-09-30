@@ -18,22 +18,23 @@ A RESTful ASP.NET Core Web API built using N-Tier Architecture and Entity Framew
 This API has 5 core domain entities:
 
 1. **User:** Tracks user profiles (`UserId`, `FirstName`, `LastName`, `Email`, `PasswordHash`, `CreatedAt`).
-- **Relationship:** One-to-Many with `Application`.
 
+- **Relationship:** One-to-Many with `Application`.
 
 2. **Company:** Stores target employer information (`CompanyId`, `Name`, `WebsiteUrl`, `Industry`, `Location`).
+
 - **Relationship:** One-to-Many with `Application`.
 
-
 3. **Application:** Core domain record (`ApplicationId`, `JobTitle`, `JobUrl`, `Status`, `AppliedDate`, `SalaryMin`, `SalaryMax`).
+
 - **Relationships:** Belongs to `User` and `Company`; One-to-Many with `Interview`; Many-to-Many with `Skill`.
 
-
 4. **Interview:** Manages hiring stages (`InterviewId`, `StageName`, `ScheduledAt`, `InterviewerName`, `Notes`, `IsCompleted`).
+
 - **Relationship:** Belongs to `Application`.
 
-
 5. **Skill:** Categorized technical and soft skills (`SkillId`, `Name`, `Category`).
+
 - **Relationship:** Many-to-Many with `Application` (via `ApplicationSkill` associative entity).
 
 ## API Base Route & Endpoints
@@ -42,38 +43,38 @@ This API has 5 core domain entities:
 
 ### Application Endpoints
 
-| Method | Endpoint | Description | Expected Status Codes |
-| --- | --- | --- | --- |
-| **GET** | `/application` | List applications (with filtering, sorting and pagination) | 200 |
-| **GET** | `/application/{id}` | Get application details by ID | 200, 404 |
-| **POST** | `/application` | Create a new application | 201, 400 |
-| **PUT** | `/application/{id}` | Update an existing application | 204, 400, 404 |
-| **PATCH** | `/application/{id}/status` | Update application status | 204, 404 |
-| **DELETE** | `/application/{id}` | Delete an application | 204, 404 |
+| Method     | Endpoint                   | Description                                                | Expected Status Codes |
+| ---------- | -------------------------- | ---------------------------------------------------------- | --------------------- |
+| **GET**    | `/application`             | List applications (with filtering, sorting and pagination) | 200                   |
+| **GET**    | `/application/{id}`        | Get application details by ID                              | 200, 404              |
+| **POST**   | `/application`             | Create a new application                                   | 201, 400              |
+| **PUT**    | `/application/{id}`        | Update an existing application                             | 204, 400, 404         |
+| **PATCH**  | `/application/{id}/status` | Update application status                                  | 204, 404              |
+| **DELETE** | `/application/{id}`        | Delete an application                                      | 204, 404              |
 
 ### Interview Endpoints
 
-| Method | Endpoint | Description | Expected Status Codes |
-| --- | --- | --- | --- |
-| **POST** | `/interview/application/{id}` | Schedule an interview for an application | 201, 400 |
-| **GET** | `/interview/application/{id}` | Get all interviews for an application | 200, 404 |
+| Method   | Endpoint                      | Description                              | Expected Status Codes |
+| -------- | ----------------------------- | ---------------------------------------- | --------------------- |
+| **POST** | `/interview/application/{id}` | Schedule an interview for an application | 201, 400              |
+| **GET**  | `/interview/application/{id}` | Get all interviews for an application    | 200, 404              |
 
 ### Skill Endpoints
 
-| Method | Endpoint | Description | Expected Status Codes |
-| --- | --- | --- | --- |
-| **GET** | `/skills` | List all available skills | 200 |
-| **POST** | `/application/{id}/skills` | Associate a skill with an application | 201, 400, 409 |
-| **POST** | `/application/{id}/skills/{skillId}` | Link existing skill to application | 204, 404, 409 |
-| **DELETE** | `/application/{id}/skills/{skillId}` | Remove skill from application | 204, 404 |
+| Method     | Endpoint                             | Description                           | Expected Status Codes |
+| ---------- | ------------------------------------ | ------------------------------------- | --------------------- |
+| **GET**    | `/skills`                            | List all available skills             | 200                   |
+| **POST**   | `/application/{id}/skills`           | Associate a skill with an application | 201, 400, 409         |
+| **POST**   | `/application/{id}/skills/{skillId}` | Link existing skill to application    | 204, 404, 409         |
+| **DELETE** | `/application/{id}/skills/{skillId}` | Remove skill from application         | 204, 404              |
 
 ### Company Endpoints
 
-| Method | Endpoint | Description | Expected Status Codes |
-| --- | --- | --- | --- |
-| **GET** | `/companies` | List all companies | 200 |
-| **GET** | `/companies/{id}` | Get company details by ID | 200, 404 |
-| **POST** | `/companies` | Add a new company | 201, 400 |
+| Method   | Endpoint          | Description               | Expected Status Codes |
+| -------- | ----------------- | ------------------------- | --------------------- |
+| **GET**  | `/companies`      | List all companies        | 200                   |
+| **GET**  | `/companies/{id}` | Get company details by ID | 200, 404              |
+| **POST** | `/companies`      | Add a new company         | 201, 400              |
 
 ## Request & Response Examples
 
@@ -175,13 +176,15 @@ This API has 5 core domain entities:
 ## Setup and Execution
 
 1. **Clone Repository:**
+
 ```bash
 git clone <repository-url>
 cd JobApplicationTrackerAPI
 ```
 
 2. **Configure Database Connection:**
-Update `appsettings.json` with your connection string:
+   Update `appsettings.json` with your connection string:
+
 ```json
 "ConnectionStrings": {
   "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=JobApplicationTrackerDb;Trusted_Connection=True;MultipleActiveResultSets=true"
@@ -189,12 +192,11 @@ Update `appsettings.json` with your connection string:
 ```
 
 3. **Apply Database Migrations:**
-Run the following command in the Package Manager Console or terminal to create and seed the database:
+   Run the following command in the Package Manager Console or terminal to create and seed the database:
+
 ```bash
 Update-Database
 ```
 
-4. **Run Application**
-
-5. **Swagger Documentation:**
-Open browser at `https://localhost:<port>/swagger` to test endpoints interactively.
+4. **Run Application:**
+   Swagger UI will open automatically after starting the application.
