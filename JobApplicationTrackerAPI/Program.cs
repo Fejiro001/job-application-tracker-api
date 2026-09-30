@@ -1,3 +1,4 @@
+using JobApplicationTrackerAPI.BLL;
 using JobApplicationTrackerAPI.DAL;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,18 @@ namespace JobApplicationTrackerAPI
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+            // Register DAL Repositories
+            builder.Services.AddScoped<ApplicationRepository>();
+            builder.Services.AddScoped<SkillRepository>();
+            builder.Services.AddScoped<CompanyRepository>();
+            builder.Services.AddScoped<InterviewRepository>();
+
+            // Register BLL Services
+            builder.Services.AddScoped<ApplicationService>();
+            builder.Services.AddScoped<SkillService>();
+            builder.Services.AddScoped<CompanyService>();
+            builder.Services.AddScoped<InterviewService>();
 
             var app = builder.Build();
 
