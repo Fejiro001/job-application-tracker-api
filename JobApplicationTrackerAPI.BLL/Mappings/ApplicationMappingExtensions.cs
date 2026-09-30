@@ -1,5 +1,5 @@
-﻿using JobApplicationTrackerAPI.BLL.Enums;
-using JobApplicationTrackerAPI.BLL.DTOs;
+﻿using JobApplicationTrackerAPI.BLL.DTOs;
+using JobApplicationTrackerAPI.BLL.Enums;
 using JobApplicationTrackerAPI.Models;
 
 namespace JobApplicationTrackerAPI.BLL.Mappings
@@ -31,6 +31,7 @@ namespace JobApplicationTrackerAPI.BLL.Mappings
         {
             return new Application
             {
+                UserId = dto.UserId,
                 CompanyId = dto.CompanyId,
                 JobTitle = dto.JobTitle,
                 JobUrl = dto.JobUrl,
