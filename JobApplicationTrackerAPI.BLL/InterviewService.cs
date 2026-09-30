@@ -1,7 +1,6 @@
 ﻿using JobApplicationTrackerAPI.BLL.DTOs;
 using JobApplicationTrackerAPI.BLL.Mappings;
 using JobApplicationTrackerAPI.DAL;
-using JobApplicationTrackerAPI.Models;
 
 namespace JobApplicationTrackerAPI.BLL
 {
