@@ -9,7 +9,7 @@ namespace JobApplicationTrackerAPI.BLL.DTOs
         public int CompanyId { get; set; }
 
         [Required]
-        [StringLength(100, MinimumLength = 2)]
+        [StringLength(255, MinimumLength = 2)]
         public string JobTitle { get; set; } = string.Empty;
 
         [Required]

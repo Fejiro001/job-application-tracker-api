@@ -1,4 +1,5 @@
 ﻿using JobApplicationTrackerAPI.BLL.Enums;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace JobApplicationTrackerAPI.BLL.DTOs
@@ -9,7 +10,7 @@ namespace JobApplicationTrackerAPI.BLL.DTOs
         public int CompanyId { get; set; }
 
         [Required(ErrorMessage = "Job title is required.")]
-        [StringLength(100, MinimumLength = 2, ErrorMessage = "Job title must be between 2 and 100 characters.")]
+        [StringLength(255, MinimumLength = 2, ErrorMessage = "Job title must be between 2 and 255 characters.")]
         public string JobTitle { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Job URL is required.")]

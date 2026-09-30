@@ -14,11 +14,11 @@ namespace JobApplicationTrackerAPI.BLL.DTOs
         public string WebsiteUrl { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Company industry is required.")]
-        [StringLength(100)]
+        [StringLength(255)]
         public string Industry { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Company location is required.")]
-        [StringLength(100)]
+        [StringLength(255)]
         public string Location { get; set; } = string.Empty;
     }
 }
