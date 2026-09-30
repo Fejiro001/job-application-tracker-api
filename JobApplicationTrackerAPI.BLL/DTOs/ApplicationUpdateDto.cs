@@ -18,7 +18,7 @@ namespace JobApplicationTrackerAPI.BLL.DTOs
         public string JobUrl { get; set; } = string.Empty;
 
         [Required]
-        public ApplicationStatus Status { get; set; }
+        public Status Status { get; set; }
 
         [Range(0, 10000000)]
         public decimal? SalaryMin { get; set; }

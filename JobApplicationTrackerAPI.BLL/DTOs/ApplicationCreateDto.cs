@@ -1,11 +1,13 @@
 ﻿using JobApplicationTrackerAPI.BLL.Enums;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace JobApplicationTrackerAPI.BLL.DTOs
 {
     public class ApplicationCreateDto
     {
+        [Required(ErrorMessage = "User ID is required.")]
+        public int UserId { get; set; }
+
         [Required(ErrorMessage = "Company is required.")]
         public int CompanyId { get; set; }
 
@@ -19,7 +21,7 @@ namespace JobApplicationTrackerAPI.BLL.DTOs
         public string JobUrl { get; set; } = string.Empty;
 
         [Required]
-        public ApplicationStatus Status { get; set; } = ApplicationStatus.Applied;
+        public Status Status { get; set; } = Status.Applied;
 
         [Required]
         public DateTime AppliedDate { get; set; }

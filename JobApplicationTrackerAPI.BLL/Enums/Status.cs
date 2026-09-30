@@ -1,6 +1,6 @@
 ﻿namespace JobApplicationTrackerAPI.BLL.Enums
 {
-    public enum ApplicationStatus
+    public enum Status
     {
         Saved,
         Applied,

@@ -14,7 +14,7 @@ namespace JobApplicationTrackerAPI.BLL.Mappings
                 ApplicationId = application.ApplicationId,
                 JobTitle = application.JobTitle,
                 JobUrl = application.JobUrl,
-                Status = (ApplicationStatus)application.Status,
+                Status = (Enums.Status)application.Status,
                 AppliedDate = application.AppliedDate,
                 SalaryMin = application.SalaryMin,
                 SalaryMax = application.SalaryMax,
@@ -34,7 +34,7 @@ namespace JobApplicationTrackerAPI.BLL.Mappings
                 CompanyId = dto.CompanyId,
                 JobTitle = dto.JobTitle,
                 JobUrl = dto.JobUrl,
-                Status = (Status)dto.Status,
+                Status = (Models.Status)dto.Status,
                 SalaryMin = dto.SalaryMin,
                 SalaryMax = dto.SalaryMax,
                 AppliedDate = dto.AppliedDate
