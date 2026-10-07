@@ -1,6 +1,10 @@
 # Job Application Tracker API
 
+## Overview
+
 A RESTful ASP.NET Core Web API built using N-Tier Architecture and Entity Framework Core. This application provides job seekers with a centralized platform to manage job applications, track multi-stage interviews, associate required skill sets, and store target company details.
+
+![Swagger Documentation](./swagger.png)
 
 ## Technical Stack & Architecture
 
