@@ -177,7 +177,7 @@ This API has 5 core domain entities:
 }
 ```
 
-## Setup and Execution
+## How to Install/Run
 
 1. **Clone Repository:**
 
